@@ -2,6 +2,12 @@
 // This function is called when the page is first loaded
 function initTheme() {
 
+    // Swith to the dark theme if the user has dark mode enabled
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        switchToDarkTheme();
+        return;
+    }
+    
     // Try to get the client theme setting
     var theme = localStorage.getItem('theme');
 
@@ -13,9 +19,9 @@ function initTheme() {
     }
 
     // Otherwise style like wished
-    if (theme == "dark") {
+    if (theme === "dark") {
         switchToDarkTheme();
-    } else if (theme == "light") {
+    } else if (theme === "light") {
         switchToLightTheme();
     }
 }
@@ -37,7 +43,9 @@ function toggleTheme() {
             switchToDarkTheme();
             break;
         default:
-            // What to do here?
+            localStorage.setItem('theme', 'light');
+            switchToLightTheme();
+            break;
             
     }
 }
