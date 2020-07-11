@@ -54,7 +54,6 @@ function toggleTheme() {
 }
 
 function switchToLightTheme() {
-
     // Change button icon
     const button = document.getElementById("themeSwitchButton");
     button.className = "fas fa-moon my-float";
